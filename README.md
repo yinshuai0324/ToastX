@@ -4,7 +4,7 @@
     用于Android的吐司库，让各个平台表现统一。使用Kotlin编写，并且预置三套主题供使用。使用简单且灵活，按需配置。
     
 ### 项目集成
- 项目当前最新版本：[![](https://jitpack.io/v/yinshuai0324/GeneralAppWidget.svg)](https://jitpack.io/#yinshuai0324/GeneralAppWidget)
+ 项目当前最新版本：[![](https://jitpack.io/v/yinshuai0324/ToastX.svg)](https://jitpack.io/#yinshuai0324/ToastX)
      
  ```
      Step 1. 添加 JitPack 仓库到你的项目
@@ -14,9 +14,12 @@
      	}
      }
  
-     Step 2. 添加 当前UI库的依赖
-     implementation 'com.github.yinshuai0324:GeneralAppWidget:tag'
+     Step 2. 添加 Toast的依赖
+     implementation 'com.github.yinshuai0324:ToastX:tag'
   ```
+
+### 下载Demo体验
+    
 
 ### 演示效果
 
