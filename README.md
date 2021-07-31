@@ -21,16 +21,16 @@
 ### 演示效果
 
 默认效果：  
-   ![](https://github.com/yinshuai0324/ToastX/doc/config_default.png)
+   ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_default.png)
     
 主题配置1：  
-    ![](https://github.com/yinshuai0324/ToastX/doc/config_1.png)
+    ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_1.png)
     
 主题配置2：  
-    ![](https://github.com/yinshuai0324/ToastX/doc/config_2.png)
+    ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_2.png)
     
 主题配置3：  
-    ![](https://github.com/yinshuai0324/ToastX/doc/config_3.png)
+    ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_3.png)
 
 
 ### 使用方法
