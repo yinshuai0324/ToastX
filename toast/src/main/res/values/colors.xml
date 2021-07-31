@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--通用颜色-->
+    <color name="color_FFFFFF">#FFFFFF</color>
+    <!--默认配置背景颜色-->
+    <color name="toast_background_color_default_info">#78D3F8</color>
+    <color name="toast_background_color_default_error">#E8684A</color>
+    <color name="toast_background_color_default_warn">#F6BD16</color>
+    <color name="toast_background_color_default_succeed">#61DDAA</color>
+    <!--配置1背景颜色-->
+    <color name="toast_background_color_config1_info">#F6D04D</color>
+    <color name="toast_background_color_config1_error">#DE4307</color>
+    <color name="toast_background_color_config1_warn">#F29C2B</color>
+    <color name="toast_background_color_config1_succeed">#8BC24C</color>
+    <!--配置2背景颜色-->
+    <color name="toast_background_color_config2_info">#3C2E3D</color>
+    <color name="toast_background_color_config2_error">#CF4037</color>
+    <color name="toast_background_color_config2_warn">#FFCC00</color>
+    <color name="toast_background_color_config2_succeed">#B2C000</color>
+    <!--配置3背景颜色-->
+    <color name="toast_background_color_config3_info">#735247</color>
+    <color name="toast_background_color_config3_error">#DC352B</color>
+    <color name="toast_background_color_config3_warn">#FFA700</color>
+    <color name="toast_background_color_config3_succeed">#245C00</color>
+
+</resources>
