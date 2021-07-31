@@ -26,13 +26,13 @@
 默认效果：  
    ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_default.png)
     
-主题配置1：  
+预置主题1：  
     ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_1.png)
     
-主题配置2：  
+预置主题2：  
     ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_2.png)
     
-主题配置3：  
+预置主题3：  
     ![](https://github.com/yinshuai0324/ToastX/blob/main/doc/config_3.png)
 
 
