@@ -19,7 +19,7 @@
   ```
 
 ### 下载Demo体验
-    
+   [点击下载Demo](https://github.com/yinshuai0324/ToastX/blob/main/doc/app-release.apk)
 
 ### 演示效果
 
