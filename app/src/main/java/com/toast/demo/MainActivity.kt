@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.app.toast.ToastX
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             R.id.config1Btn -> startActivity(Intent(this, Config1Activity::class.java))
             R.id.config2Btn -> startActivity(Intent(this, Config2Activity::class.java))
             R.id.config3Btn -> startActivity(Intent(this, Config3Activity::class.java))
+            R.id.testBtn -> ToastX.show(this)
         }
     }
 }

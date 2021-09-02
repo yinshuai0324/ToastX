@@ -1,4 +1,4 @@
-package com.general.widget.expand
+package com.app.toast.expand
 
 import android.content.res.Resources
 import android.util.TypedValue
@@ -52,3 +52,10 @@ val Float.sp: Float
             Resources.getSystem().displayMetrics
         )
     }
+
+/**
+ * 获取屏幕高度
+ */
+fun getDeviceHeight(): Int {
+    return Resources.getSystem().displayMetrics.heightPixels
+}

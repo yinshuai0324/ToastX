@@ -1,204 +1,166 @@
 package com.app.toast
 
+import android.animation.ObjectAnimator
+import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
+import android.graphics.Rect
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
-import android.util.TypedValue
-import android.view.LayoutInflater
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.app.toast.config.DefaultConfig
-import com.app.toast.config.ToastConfig
-import com.app.toast.config.ToastType
-import java.lang.NullPointerException
+import androidx.core.animation.addListener
+import androidx.core.animation.doOnEnd
+import com.app.toast.expand.dp
+import com.app.toast.expand.getDeviceHeight
+import java.util.concurrent.atomic.AtomicReference
 
 object ToastX {
-
-    const val LENGTH_LONG = Toast.LENGTH_LONG
-    const val LENGTH_SHORT = Toast.LENGTH_SHORT
-
-    /**
-     * Toast配置
-     */
-    private lateinit var toastConfig: ToastConfig
-
-    /**
-     * 最后显示的Toast
-     */
-    private var lastToast: Toast? = null
+    private val decorView = AtomicReference<ViewGroup>()
+    private val toastView = AtomicReference<View>()
+    private val toastHeight = 40.dp
+    private val rect = Rect()
+    private val direction = Direction.BOTTOM
+    private val showTime = 3000L
+    private val offset: Float = 100f
 
     /**
-     * Toast 类型
+     * 执行关闭-带动画
      */
-    private var toastType: Int = -1
+    private const val EVENT_DISMISS_AMIN = 1001
 
     /**
-     * 显示普通Toast
+     * 执行关闭-无动画
      */
-    fun showInfoToast(ctx: Context, msg: String?) {
-        val config = if (::toastConfig.isInitialized) {
-            toastConfig
-        } else {
-            DefaultConfig()
+    private const val EVENT_DISMISS = 1002
+
+    fun show(activity: Activity) {
+        val decorView = activity.window.decorView as FrameLayout
+        this.decorView.set(decorView)
+        decorView.getWindowVisibleDisplayFrame(rect)
+        removeView()
+        val toastView = View.inflate(activity, R.layout.toast_x_view, null)
+        toastView.id = R.id.toast_view
+        if (this.toastView.get() != null) {
+            this.toastView.get().clearAnimation()
         }
-        type(ToastType.TYPE_INFO).config(getCurrentConfig()).makeText(ctx, msg, LENGTH_SHORT).show()
+        this.toastView.set(toastView)
+        decorView.addView(toastView)
+        val layoutParams = FrameLayout.LayoutParams(-2, toastHeight)
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL
+        toastView.layoutParams = layoutParams
+        startAnimIn()
     }
 
 
     /**
-     * 显示警告Toast
+     * 开始进入动画
      */
-    fun showWarnToast(ctx: Context, msg: String?) {
-        type(ToastType.TYPE_WARN).config(getCurrentConfig()).makeText(ctx, msg, LENGTH_SHORT).show()
-    }
-
-    /**
-     * 显示错误Toast
-     */
-    fun showErrorToast(ctx: Context, msg: String?) {
-        type(ToastType.TYPE_ERROR).config(getCurrentConfig()).makeText(ctx, msg, LENGTH_SHORT)
-            .show()
-    }
-
-    /**
-     * 显示成功Toast
-     */
-    fun showSucceedToast(ctx: Context, msg: String?) {
-        type(ToastType.TYPE_SUCCEED).config(getCurrentConfig()).makeText(ctx, msg, LENGTH_SHORT)
-            .show()
-    }
-
-
-    /**
-     * 显示普通Toast
-     */
-    fun showInfoToast(ctx: Context, msg: String?, duration: Int) {
-        type(ToastType.TYPE_INFO).config(getCurrentConfig()).makeText(ctx, msg, duration).show()
-    }
-
-
-    /**
-     * 显示警告Toast
-     */
-    fun showWarnToast(ctx: Context, msg: String?, duration: Int) {
-        type(ToastType.TYPE_WARN).config(getCurrentConfig()).makeText(ctx, msg, duration).show()
-    }
-
-    /**
-     * 显示错误Toast
-     */
-    fun showErrorToast(ctx: Context, msg: String?, duration: Int) {
-        type(ToastType.TYPE_ERROR).config(getCurrentConfig()).makeText(ctx, msg, duration).show()
-    }
-
-    /**
-     * 显示成功Toast
-     */
-    fun showSucceedToast(ctx: Context, msg: String?, duration: Int) {
-        type(ToastType.TYPE_SUCCEED).config(getCurrentConfig()).makeText(ctx, msg, duration).show()
-    }
-
-    /**
-     * 配置
-     */
-    fun config(config: ToastConfig?): ToastX {
-        config?.let {
-            toastConfig = it
-        }
-        return this
-    }
-
-    /**
-     * 指定Toast类型
-     */
-    fun type(type: Int): ToastX {
-        toastType = type
-        return this
-    }
-
-    /**
-     * 创建Toast
-     */
-    fun makeText(cxt: Context?, msg: String?, duration: Int): Toast {
-        if (cxt == null) {
-            throw NullPointerException("context is null")
-        }
-        return createToast(cxt, toastType, msg, duration)
-    }
-
-
-    /**
-     * 创建Toast
-     */
-    private fun createToast(ctx: Context, type: Int, msg: String?, duration: Int): Toast {
-        if (!::toastConfig.isInitialized) {
-            toastConfig = DefaultConfig()
-        }
-        val currentToast = Toast.makeText(ctx, "", duration)
-        val inflater = ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.toast_view, null)
-        val iconView = view.findViewById<ImageView>(R.id.icon)
-        val msgView = view.findViewById<TextView>(R.id.msg)
-        //设置Toast高度
-        val layoutParams = LinearLayout.LayoutParams(-2, toastConfig.toastHeight())
-        view.layoutParams = layoutParams
-        //设置Toast背景
-        val backgroundDrawable = GradientDrawable().apply {
-            setColor(getColor(ctx, toastConfig.toastBackgroundColor(type)))
-            cornerRadius = toastConfig.toastRadius()
-        }
-        view.background = backgroundDrawable
-        //设置ToastIcon
-        val iconRes = toastConfig.toastIconRes(type)
-        if (toastConfig.isShowIcon() && iconRes != 0) {
-            iconView.visibility = View.VISIBLE
-            //设置高度
-            val width = toastConfig.toastIconWidth()
-            val height = toastConfig.toastIconHeight()
-            val iconParams = LinearLayout.LayoutParams(width, height)
-            iconView.layoutParams = iconParams
-            //设置Icon
-            iconView.setImageResource(iconRes)
-        }
-        //设置msg
-        msgView.text = msg ?: ""
-        //设置msg文字颜色
-        msgView.setTextColor(getColor(ctx, toastConfig.toastTextColor(type)))
-        //设置msg文字大小
-        msgView.setTextSize(TypedValue.COMPLEX_UNIT_PX, toastConfig.toastTextSize())
-        //设置自定义样式
-        currentToast.view = view
-
-        if (lastToast != null) {
-            lastToast?.cancel()
-        }
-        lastToast = currentToast
-        return currentToast
-    }
-
-
-    /**
-     * 获取颜色
-     */
-    private fun getColor(cxt: Context, color: Int): Int {
-        return ContextCompat.getColor(cxt, color)
-    }
-
-
-    /**
-     * 获取本次显示的Config
-     */
-    private fun getCurrentConfig(): ToastConfig {
-        return if (::toastConfig.isInitialized) {
-            toastConfig
-        } else {
-            DefaultConfig()
+    private fun startAnimIn() {
+        val view = toastView.get()
+        val startY = getInAnimParams().first
+        val endY = getInAnimParams().second
+        ObjectAnimator.ofFloat(view, "translationY", startY, endY).apply {
+            duration = 1000
+            doOnEnd {
+                Log.i("===>>>", "anim play wc")
+                // 指定时长后 走退出动画
+                val message = Message()
+                message.what = EVENT_DISMISS_AMIN
+                handler.sendMessageDelayed(message, showTime)
+            }
+            start()
         }
     }
+
+    /**
+     * 退出动画
+     */
+    private fun startAnimOut() {
+        val view = toastView.get()
+        val startY = getOutAnimParams().first
+        val endY = getOutAnimParams().second
+        ObjectAnimator.ofFloat(view, "translationY", startY, endY).apply {
+            duration = 1000
+            addListener { doOnEnd { removeView() } }
+            start()
+        }
+    }
+
+    /**
+     * 获取动画所需要的餐素
+     */
+    private fun getInAnimParams(): Pair<Float, Float> {
+        var startY = 0f
+        var endY = 0f
+        when (direction) {
+            Direction.BOTTOM -> {
+                startY = (rect.bottom + toastHeight).toFloat()
+                endY = rect.bottom - toastHeight - offset
+            }
+            Direction.TOP -> {
+                startY = (rect.top - toastHeight).toFloat()
+                endY = rect.top + toastHeight + offset
+            }
+        }
+        return Pair(startY, endY)
+    }
+
+    /**
+     * 获取动画所需要的餐素
+     */
+    private fun getOutAnimParams(): Pair<Float, Float> {
+        var startY = 0f
+        var endY = 0f
+        when (direction) {
+            Direction.BOTTOM -> {
+                startY = rect.bottom - toastHeight - offset
+                endY = (rect.bottom + toastHeight).toFloat()
+            }
+            Direction.TOP -> {
+                startY = rect.top + toastHeight + offset
+                endY = (rect.top - toastHeight).toFloat()
+            }
+        }
+        return Pair(startY, endY)
+    }
+
+
+    /**
+     * 移除View
+     */
+    private fun removeView() {
+        val decorView = this.decorView.get()
+        val toast = decorView.findViewById<View>(R.id.toast_view)
+        toast?.let {
+            decorView.removeView(it)
+        }
+    }
+
+    private val handler = object : Handler(Looper.getMainLooper(), object : Callback {
+        override fun handleMessage(p0: Message): Boolean {
+            return when (p0.what) {
+                EVENT_DISMISS_AMIN -> {
+                    Log.i("===>>>", "关闭弹窗")
+                    startAnimOut()
+                    true
+                }
+                EVENT_DISMISS -> {
+                    removeView()
+                    true
+                }
+                else -> false
+            }
+        }
+    }) {}
+
+    enum class Direction {
+        TOP,
+        BOTTOM
+    }
+
 }
