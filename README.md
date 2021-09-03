@@ -23,7 +23,7 @@
 
 ### 演示效果
 
-![](https://github.com/yinshuai0324/ToastX/blob/main/doc/Toast.gif)
+![](https://github.com/yinshuai0324/ToastX/blob/main/doc/Toast.gif){:height="1920px" width="1080px"}
 
 
 ### 使用方法
