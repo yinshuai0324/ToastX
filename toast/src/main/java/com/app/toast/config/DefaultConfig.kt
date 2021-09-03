@@ -1,9 +1,8 @@
 package com.app.toast.config
 
-import android.util.Log
 import com.app.toast.R
-import com.general.widget.expand.dp
-import com.general.widget.expand.sp
+import com.app.toast.expand.dp
+import com.app.toast.expand.sp
 
 /**
  * 默认配置
