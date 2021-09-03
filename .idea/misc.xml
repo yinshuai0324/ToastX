@@ -5,12 +5,23 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.2388888888888889" />
         <entry key="../../../.gradle/caches/transforms-2/files-2.1/d5ed11f063a4dc68c5a2cb5b1978e46f/material-1.2.1/res/layout/mtrl_layout_snackbar_include.xml" value="0.22327898550724637" />
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout-sw600dp-v13/design_layout_snackbar.xml" value="0.16393442622950818" />
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout/design_layout_snackbar.xml" value="0.1" />
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout/design_layout_snackbar_include.xml" value="0.21739130434782608" />
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout/mtrl_layout_snackbar.xml" value="0.21739130434782608" />
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout/mtrl_layout_snackbar_include.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
+        <entry key="toast/src/main/res/drawable/bg_toast.xml" value="0.2351851851851852" />
+        <entry key="toast/src/main/res/layout/design_layout_snackbar.xml" value="0.1" />
+        <entry key="toast/src/main/res/layout/design_layout_snackbar_include.xml" value="0.21739130434782608" />
+        <entry key="toast/src/main/res/layout/mtrl_layout_snackbar.xml" value="0.1" />
+        <entry key="toast/src/main/res/layout/mtrl_layout_snackbar_include.xml" value="0.21739130434782608" />
+        <entry key="toast/src/main/res/layout/toast_layout.xml" value="0.21739130434782608" />
         <entry key="toast/src/main/res/layout/toast_x_view.xml" value="0.22327898550724637" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

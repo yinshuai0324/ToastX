@@ -23,4 +23,7 @@
     <color name="toast_background_color_config3_warn">#FFA700</color>
     <color name="toast_background_color_config3_succeed">#245C00</color>
 
+
+    <color name="colorSurface">#121212</color>
+
 </resources>
