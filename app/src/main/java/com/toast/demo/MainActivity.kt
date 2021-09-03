@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             R.id.config1Btn -> startActivity(Intent(this, Config1Activity::class.java))
             R.id.config2Btn -> startActivity(Intent(this, Config2Activity::class.java))
             R.id.config3Btn -> startActivity(Intent(this, Config3Activity::class.java))
-            R.id.testBtn -> ToastX.with(this).offset(50.dp).position(SnackBarX.POSITION_TOP).duration(1000).text("网络已连接").show()
+            R.id.testBtn -> ToastX.with(this).offset(50.dp).animationMode(SnackBarX.ANIM_MODEL_FADE).position(SnackBarX.POSITION_BOTTOM).duration(1000).text("网络已连接").show()
         }
     }
 }

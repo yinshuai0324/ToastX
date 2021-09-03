@@ -958,6 +958,17 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     }
 
     private void startFadeInAnimation() {
+        int translationYBottom = 0;
+        if (position == 0) {
+            translationYBottom = -offset;
+        } else if (position == 1) {
+            translationYBottom = offset;
+        }
+        if (USE_OFFSET_API) {
+            ViewCompat.offsetTopAndBottom(view, translationYBottom);
+        } else {
+            view.setTranslationY(translationYBottom);
+        }
         ValueAnimator alphaAnimator = getAlphaAnimator(0, 1);
         ValueAnimator scaleAnimator = getScaleAnimator(ANIMATION_SCALE_FROM_VALUE, 1);
 
@@ -975,6 +986,17 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     }
 
     private void startFadeOutAnimation(final int event) {
+        int translationYBottom = 0;
+        if (position == 0) {
+            translationYBottom = -offset;
+        } else if (position == 1) {
+            translationYBottom = offset;
+        }
+        if (USE_OFFSET_API) {
+            ViewCompat.offsetTopAndBottom(view, translationYBottom);
+        } else {
+            view.setTranslationY(translationYBottom);
+        }
         ValueAnimator animator = getAlphaAnimator(1, 0);
         animator.setDuration(ANIMATION_FADE_OUT_DURATION);
         animator.addListener(
