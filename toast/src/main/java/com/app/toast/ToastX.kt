@@ -18,11 +18,47 @@ import androidx.core.animation.addListener
 import androidx.core.animation.doOnEnd
 import com.app.toast.expand.dp
 import com.app.toast.expand.getDeviceHeight
+import com.app.toast.snackbar.BaseTransientBottomBar
 import com.app.toast.snackbar.SnackBarX
 import com.google.android.material.snackbar.Snackbar
 import java.util.concurrent.atomic.AtomicReference
 
 object ToastX {
+
+    /**
+     * 动画从底下弹出
+     */
+    const val ANIM_MODEL_SLIDE = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+
+    /**
+     * 动画渐变和缩放
+     */
+    const val ANIM_MODEL_FADE = BaseTransientBottomBar.ANIMATION_MODE_FADE
+
+    /**
+     * 不消失
+     */
+    const val DURATION_INDEFINITE = com.app.toast.snackbar.Snackbar.LENGTH_INDEFINITE
+
+    /**
+     * 短时间
+     */
+    const val DURATION_SHORT = 1500
+
+    /**
+     * 长时间
+     */
+    const val DURATION_LONG = 2750
+
+    /**
+     * 显示的位置-顶部
+     */
+    const val POSITION_TOP = 1
+
+    /**
+     * 显示的位置-底部
+     */
+    const val POSITION_BOTTOM = 0
 
     fun with(context: Context): ToastX {
         if (context is Activity) {
@@ -35,6 +71,7 @@ object ToastX {
         val rootView = activity.findViewById<ViewGroup>(android.R.id.content)
         return SnackBarX(rootView)
     }
+
 
     fun with(viewGroup: ViewGroup): SnackBarX {
         return SnackBarX(viewGroup)

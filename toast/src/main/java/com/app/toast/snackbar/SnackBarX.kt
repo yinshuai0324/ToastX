@@ -9,6 +9,10 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.app.toast.R
+import com.app.toast.ToastX.ANIM_MODEL_SLIDE
+import com.app.toast.ToastX.DURATION_SHORT
+import com.app.toast.ToastX.POSITION_BOTTOM
+import com.app.toast.ToastX.POSITION_TOP
 import com.app.toast.expand.dp
 import java.text.FieldPosition
 
@@ -22,53 +26,19 @@ class SnackBarX {
     /******参数部分********/
     private var position: Int = POSITION_BOTTOM
     private var height: Int = 40.dp
+    private var width: Int = FrameLayout.LayoutParams.WRAP_CONTENT
     private var textSize: Float = 14f
     private var textColor: Int = R.color.color_FFFFFF
     private var backgroundColor: Int = R.color.colorSurface
     private var radius: Float = 20f.dp
     private var animationMode: Int = ANIM_MODEL_SLIDE
-    private var paddingLeft: Int = 8.dp
-    private var paddingRight: Int = 8.dp
+    private var paddingLeft: Int = 15.dp
+    private var paddingRight: Int = 15.dp
+    private var marginLeft: Int = 0
+    private var marginRight: Int = 0
     private var duration: Int = DURATION_SHORT
     private var offset: Int = 0
-
-
-    companion object {
-        /**
-         * 动画从底下弹出
-         */
-        const val ANIM_MODEL_SLIDE = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
-
-        /**
-         * 动画渐变和缩放
-         */
-        const val ANIM_MODEL_FADE = BaseTransientBottomBar.ANIMATION_MODE_FADE
-
-        /**
-         * 不消失
-         */
-        const val DURATION_INDEFINITE = Snackbar.LENGTH_INDEFINITE
-
-        /**
-         * 短时间
-         */
-        const val DURATION_SHORT = 1500
-
-        /**
-         * 长时间
-         */
-        const val DURATION_LONG = 2750
-
-        /**
-         * 显示的位置-顶部
-         */
-        const val POSITION_TOP = 1
-
-        /**
-         * 显示的位置-底部
-         */
-        const val POSITION_BOTTOM = 0
-    }
+    private var textGravity: Int = Gravity.CENTER
 
 
     constructor(viewGroup: ViewGroup) {
@@ -124,6 +94,12 @@ class SnackBarX {
         return this
     }
 
+    fun margin(left: Int, right: Int): SnackBarX {
+        this.marginLeft = left
+        this.marginRight = right
+        return this
+    }
+
     fun duration(duration: Int): SnackBarX {
         this.duration = duration
         return this
@@ -139,6 +115,16 @@ class SnackBarX {
         return this
     }
 
+    fun width(width: Int): SnackBarX {
+        this.width = width
+        return this
+    }
+
+    fun textGravity(gravity: Int): SnackBarX {
+        this.textGravity = gravity
+        return this
+    }
+
 
     fun show() {
         mContext = viewGroup.context
@@ -149,12 +135,13 @@ class SnackBarX {
         snackBarLayout = snackBar.view as ViewGroup
         snackBarLayout.removeAllViews()
         //重新设置宽高
-        val layoutParams = FrameLayout.LayoutParams(-2, height)
+        val layoutParams = FrameLayout.LayoutParams(width, height)
         layoutParams.gravity = when (position) {
             POSITION_TOP -> Gravity.TOP or Gravity.CENTER_HORIZONTAL
             POSITION_BOTTOM -> Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
             else -> Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
         }
+        layoutParams.setMargins(marginLeft, 0, marginRight, 0)
         snackBarLayout.layoutParams = layoutParams
         snackBarLayout.setPadding(paddingLeft, 0, paddingRight, 0)
         //设置背景
@@ -168,7 +155,7 @@ class SnackBarX {
         //添加Text
         val message = TextView(mContext)
         message.text = messageValue
-        message.gravity = Gravity.CENTER
+        message.gravity = textGravity
         message.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize)
         message.setTextColor(ContextCompat.getColor(mContext, textColor))
         snackBarLayout.addView(message)
