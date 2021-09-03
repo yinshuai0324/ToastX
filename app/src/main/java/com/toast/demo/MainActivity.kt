@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.FrameLayout
 import com.app.toast.ToastX
 import com.app.toast.expand.dp
 import com.app.toast.snackbar.SnackBarX
@@ -24,10 +25,18 @@ class MainActivity : AppCompatActivity() {
             R.id.topBtn -> {
                 ToastX.with(this)
                     .text("我是在顶部的")
-                    .margin(15.dp, 15.dp)
                     .backgroundColor(R.color.toast_background_color_config3_succeed)
+                    .animationMode(ToastX.ANIM_MODEL_SLIDE)
                     .textColor(R.color.color_FFFFFF)
                     .position(ToastX.POSITION_TOP)
+                    .textGravity(Gravity.CENTER)
+                    .duration(1000)
+                    .textSize(14f)
+                    .padding(10.dp, 10.dp)
+                    .margin(15.dp, 15.dp)
+                    .height(40.dp)
+                    .width(100.dp)
+                    .radius(10f.dp)
                     .offset(10.dp)
                     .show()
             }

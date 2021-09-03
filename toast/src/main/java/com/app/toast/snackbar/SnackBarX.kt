@@ -47,7 +47,7 @@ class SnackBarX {
     }
 
 
-    fun gravity(position: Int): SnackBarX {
+    fun position(position: Int): SnackBarX {
         this.position = position
         return this
     }
@@ -110,10 +110,7 @@ class SnackBarX {
         return this
     }
 
-    fun position(position: Int): SnackBarX {
-        this.position = position
-        return this
-    }
+
 
     fun width(width: Int): SnackBarX {
         this.width = width
