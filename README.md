@@ -23,7 +23,9 @@
 
 ### 演示效果
 
-![](https://github.com/yinshuai0324/ToastX/blob/main/doc/Toast.gif){:height="1920px" width="1080px"}
+![](https://github.com/yinshuai0324/ToastX/blob/main/doc/Toast.gif)
+
+<img src="https://github.com/yinshuai0324/ToastX/blob/main/doc/Toast.gif" width = "1080" height = "1920" alt="" align=center />
 
 
 ### 使用方法
