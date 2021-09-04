@@ -24,7 +24,7 @@
 
 ### 演示效果
 
-#### gif演示
+#### gif演示(gif比较卡顿，建议下载视频或者下载apk查看效果)
 <img src="https://github.com/yinshuai0324/ToastX/blob/main/doc/gifs.gif" width = "300" alt="" align=center />
 
 #### 视频演示
