@@ -2,7 +2,7 @@
 
 ### 项目介绍
     轻量级的Android吐司库，底层使用SnackBar实现，可以实现顶部弹出，底部弹出。
-    UI可高度定制。支持自定哟布局。可自定义显示时长。提供简洁的APi调用
+    UI可高度定制。支持自定义布局。可自定义显示时长。提供简洁的APi调用
     
 ### 项目集成
  项目当前最新版本：[![](https://jitpack.io/v/yinshuai0324/ToastX.svg)](https://jitpack.io/#yinshuai0324/ToastX)
@@ -28,7 +28,7 @@
 <img src="https://github.com/yinshuai0324/ToastX/blob/main/doc/gifs.gif" width = "300" alt="" align=center />
 
 #### 视频演示
-[点击下载Demo](https://github.com/yinshuai0324/ToastX/blob/main/doc/videos.mp4)
+[查看视频](https://github.com/yinshuai0324/ToastX/blob/main/doc/videos.mp4)
 
 ### 使用方法
 
@@ -65,7 +65,6 @@ ToastX.with(this)
      .position(ToastX.POSITION_TOP) //显示的位置 顶部或者底部
      .duration(1000) //显示的时间 单位ms
      .margin(15.dp, 15.dp) //左右外边距
-     .radius(10f.dp) //圆角半径
      .offset(10.dp) //距离顶部或者底部的偏移量
      .show() //显示
 ```
@@ -84,7 +83,6 @@ val toast = ToastX.with(this)
               .position(ToastX.POSITION_TOP) //显示的位置 顶部或者底部
               .duration(1000) //显示的时间 单位ms
               .margin(15.dp, 15.dp) //左右外边距
-              .radius(10f.dp) //圆角半径
               .offset(10.dp) //距离顶部或者底部的偏移量
 
     toast.show() //显示
