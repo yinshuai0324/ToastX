@@ -81,7 +81,7 @@ val toast = ToastX.with(this)
               .customizeView(view) //自定义布局
               .animationMode(ToastX.ANIM_MODEL_SLIDE) //动画模式 弹出或者渐变
               .position(ToastX.POSITION_TOP) //显示的位置 顶部或者底部
-              .duration(1000) //显示的时间 单位ms
+              .duration(ToastX.DURATION_INDEFINITE) //显示的时间 单位ms
               .margin(15.dp, 15.dp) //左右外边距
               .offset(10.dp) //距离顶部或者底部的偏移量
 
