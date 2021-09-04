@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-
 android {
     compileSdkVersion 29
     buildToolsVersion "28.0.3"
@@ -35,3 +34,14 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+//https://cn.xiandan.in/posts/maven-central.html
+
+ext {
+    groupId = 'in.xiandan'
+    description = '全局耗时计算器，可以在任何地方计算耗时' //项目
+    gitUrl = 'https://github.com/xiandanin/AnyCost' //Git地址，不包含.git
+    authorEmail = 'example@example.com' // 作者邮箱
+    license = 'MIT' //开源协议，可选
+}
+apply from: '../publish.gradle'
