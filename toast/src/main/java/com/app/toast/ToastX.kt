@@ -38,7 +38,7 @@ object ToastX {
     /**
      * 不消失
      */
-    const val DURATION_INDEFINITE = com.app.toast.snackbar.Snackbar.LENGTH_INDEFINITE
+    const val DURATION_INDEFINITE = 0
 
     /**
      * 短时间

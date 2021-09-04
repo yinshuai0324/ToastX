@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -19,9 +20,9 @@ import java.text.FieldPosition
 class SnackBarX {
     private lateinit var snackBar: Snackbar
     private lateinit var snackBarLayout: ViewGroup
-    private var viewGroup: ViewGroup
+    private var viewGroup: ViewGroup? = null
     private var messageValue: String = ""
-    private var mContext: Context
+    private var mContext: Context? = null
 
     /******参数部分********/
     private var position: Int = POSITION_BOTTOM
@@ -39,11 +40,14 @@ class SnackBarX {
     private var duration: Int = DURATION_SHORT
     private var offset: Int = 0
     private var textGravity: Int = Gravity.CENTER
+    private var customizeView: View? = null
 
 
-    constructor(viewGroup: ViewGroup) {
-        this.viewGroup = viewGroup
-        this.mContext = this.viewGroup.context
+    constructor(viewGroup: ViewGroup?) {
+        viewGroup?.let {
+            this.viewGroup = it
+            this.mContext = it.context
+        }
     }
 
 
@@ -111,7 +115,6 @@ class SnackBarX {
     }
 
 
-
     fun width(width: Int): SnackBarX {
         this.width = width
         return this
@@ -123,14 +126,39 @@ class SnackBarX {
     }
 
 
+    fun customizeView(view: View): SnackBarX {
+        customizeView = view
+        return this
+    }
+
+
+    fun dismiss() {
+        snackBar?.dismiss()
+    }
+
+
     fun show() {
-        mContext = viewGroup.context
-        //获取根布局
-        snackBar = Snackbar.make(viewGroup, "", duration)
-        snackBar.setPosition(position)
-        snackBar.setOffset(offset)
-        snackBarLayout = snackBar.view as ViewGroup
-        snackBarLayout.removeAllViews()
+        viewGroup?.let {
+            //获取根布局
+            snackBar = Snackbar.make(it, "", duration)
+            snackBar.setPosition(position)
+            snackBar.setOffset(offset)
+            snackBarLayout = snackBar.view
+            snackBarLayout.removeAllViews()
+            if (customizeView != null) {
+                setCustomizeView(it.context)
+            } else {
+                setToastView(it.context, snackBarLayout)
+            }
+            snackBar.show()
+        }
+    }
+
+
+    /**
+     * 设置Toast样式
+     */
+    private fun setToastView(context: Context, snackBarLayout: ViewGroup) {
         //重新设置宽高
         val layoutParams = FrameLayout.LayoutParams(width, height)
         layoutParams.gravity = when (position) {
@@ -144,18 +172,38 @@ class SnackBarX {
         //设置背景
         val background = GradientDrawable()
         background.shape = GradientDrawable.RECTANGLE
-        background.setColor(ContextCompat.getColor(mContext, backgroundColor))
+        background.setColor(ContextCompat.getColor(context, backgroundColor))
         background.cornerRadius = radius
         snackBarLayout.background = background
         //设置动画模式
         snackBar.animationMode = animationMode
         //添加Text
-        val message = TextView(mContext)
+        val message = TextView(context)
         message.text = messageValue
         message.gravity = textGravity
         message.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize)
-        message.setTextColor(ContextCompat.getColor(mContext, textColor))
+        message.setTextColor(ContextCompat.getColor(context, textColor))
         snackBarLayout.addView(message)
-        snackBar.show()
+    }
+
+    /**
+     * 设置自定义View
+     */
+    private fun setCustomizeView(context: Context) {
+        //设置父容器样式
+        val layoutParams = FrameLayout.LayoutParams(-1, -2)
+        layoutParams.gravity = when (position) {
+            POSITION_TOP -> Gravity.TOP or Gravity.CENTER_HORIZONTAL
+            POSITION_BOTTOM -> Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
+            else -> Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
+        }
+        layoutParams.setMargins(marginLeft, 0, marginRight, 0)
+        snackBarLayout.layoutParams = layoutParams
+        //设置背景
+        snackBarLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.color_00000000))
+        //设置动画模式
+        snackBar.animationMode = animationMode
+        //添加自定义View
+        snackBarLayout.addView(customizeView)
     }
 }

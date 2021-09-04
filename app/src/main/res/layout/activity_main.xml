@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="@color/color_EEE8CD"
     tools:context=".MainActivity">
 
 
@@ -54,5 +55,27 @@
         android:layout_height="wrap_content"
         android:onClick="onMainItemClick"
         android:text="错误" />
+
+    <Button
+        android:id="@+id/customizeTopBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onMainItemClick"
+        android:text="自定义布局-顶部" />
+
+    <Button
+        android:id="@+id/customizeBottomBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onMainItemClick"
+        android:text="自定义布局-底部" />
+
+
+    <Button
+        android:id="@+id/customizeTopNBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onMainItemClick"
+        android:text="自定义布局-顶部-不消失-触摸消失" />
 
 </LinearLayout>

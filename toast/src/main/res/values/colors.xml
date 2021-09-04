@@ -2,6 +2,8 @@
 <resources>
     <!--通用颜色-->
     <color name="color_FFFFFF">#FFFFFF</color>
+    <color name="color_EEE8CD">#EEE8CD</color>
+    <color name="color_00000000">#00000000</color>
     <!--默认配置背景颜色-->
     <color name="toast_background_color_default_info">#78D3F8</color>
     <color name="toast_background_color_default_error">#E8684A</color>

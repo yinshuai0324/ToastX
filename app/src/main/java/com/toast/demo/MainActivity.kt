@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.app.toast.ToastX
@@ -85,6 +86,37 @@ class MainActivity : AppCompatActivity() {
                     .backgroundColor(R.color.toast_background_color_config1_error)
                     .offset(10.dp)
                     .show()
+            }
+            R.id.customizeTopBtn -> {
+                val view = LayoutInflater.from(this).inflate(R.layout.message_view, null)
+                ToastX.with(this)
+                    .customizeView(view)
+                    .position(ToastX.POSITION_TOP)
+                    .offset(10.dp)
+                    .margin(15.dp, 15.dp)
+                    .show()
+            }
+            R.id.customizeBottomBtn -> {
+                val view = LayoutInflater.from(this).inflate(R.layout.message_view, null)
+                ToastX.with(this)
+                    .customizeView(view)
+                    .position(ToastX.POSITION_BOTTOM)
+                    .offset(10.dp)
+                    .margin(15.dp, 15.dp)
+                    .show()
+            }
+            R.id.customizeTopNBtn -> {
+                val view = LayoutInflater.from(this).inflate(R.layout.message_view, null)
+                val toast = ToastX.with(this)
+                    .customizeView(view)
+                    .duration(ToastX.DURATION_INDEFINITE)
+                    .position(ToastX.POSITION_TOP)
+                    .offset(10.dp)
+                    .margin(15.dp, 15.dp)
+                toast.show()
+                view.setOnClickListener {
+                    toast.dismiss()
+                }
             }
         }
     }
