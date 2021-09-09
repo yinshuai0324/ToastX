@@ -8,7 +8,6 @@
      
  ```
  repositories {
-   google()
    mavenCentral()
  }
  
