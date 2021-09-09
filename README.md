@@ -5,18 +5,16 @@
     UI可高度定制。支持自定义布局。可自定义显示时长。提供简洁的APi调用
     
 ### 项目集成
- 项目当前最新版本：[![](https://jitpack.io/v/yinshuai0324/ToastX.svg)](https://jitpack.io/#yinshuai0324/ToastX)
      
  ```
-     Step 1. 添加 JitPack 仓库到你的项目
-     allprojects {
-     	repositories {
-     		maven { url 'https://jitpack.io' }
-     	}
-     }
+ repositories {
+   google()
+   mavenCentral()
+ }
  
-     Step 2. 添加 Toast的依赖
-     implementation 'com.github.yinshuai0324:ToastX:tag'
+ dependencies {
+   implementation 'com.ooimi:toastx:1.1.2'
+ }
   ```
 
 ### 下载Demo体验
