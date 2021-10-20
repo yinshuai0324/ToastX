@@ -12,7 +12,7 @@
  }
  
  dependencies {
-   implementation 'com.ooimi:toastx:1.1.2'
+   implementation 'com.ooimi:toastx:1.1.3'
  }
   ```
 

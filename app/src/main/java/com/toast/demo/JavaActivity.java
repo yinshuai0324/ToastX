@@ -9,6 +9,7 @@ import android.view.View;
 import com.app.toast.ToastX;
 import com.app.toast.utils.ToastUtils;
 
+
 public class JavaActivity extends AppCompatActivity {
 
     @Override
