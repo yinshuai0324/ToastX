@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".JavaActivity">
 
     <Button
@@ -11,5 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="show"/>
+=======
+    android:gravity="center"
+    tools:context=".JavaActivity">
+
+    <Button
+        android:id="@+id/showBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示"/>
+>>>>>>> 090f7031da9088f4f1ae0c5702a95c1d71cd9d26
 
 </LinearLayout>

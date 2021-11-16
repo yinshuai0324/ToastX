@@ -12,7 +12,7 @@
  }
  
  dependencies {
-   implementation 'com.ooimi:toastx:1.1.2'
+   implementation 'com.ooimi:toastx:1.1.3'
  }
   ```
 
@@ -64,6 +64,26 @@ ToastX.with(this)
      .margin(15.dp, 15.dp) //左右外边距
      .offset(10.dp) //距离顶部或者底部的偏移量
      .show() //显示
+```
+
+#### java版本
+```
+ToastX.with(JavaActivity.this)
+      .text("我是在顶部的")
+      .backgroundColor(R.color.toast_background_color_config3_succeed)
+      .animationMode(ToastX.ANIM_MODEL_SLIDE)
+      .textColor(R.color.color_FFFFFF)
+      .position(ToastX.POSITION_TOP)
+      .textGravity(Gravity.CENTER)
+      .duration(1000)
+      .textSize(14f)
+      .padding(ToastUtils.toDip(20), ToastUtils.toDip(20))
+      .margin(ToastUtils.toDip(15), ToastUtils.toDip(15))
+      .height(ToastUtils.toDip(40))
+      .width(ToastUtils.toDip(100))
+      .radius(ToastUtils.toDip(10))
+      .offset(ToastUtils.toDip(10))
+      .show();
 ```
 
 
