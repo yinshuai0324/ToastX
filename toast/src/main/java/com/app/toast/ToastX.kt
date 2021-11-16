@@ -60,6 +60,7 @@ object ToastX {
      */
     const val POSITION_BOTTOM = 0
 
+    @JvmStatic
     fun with(context: Context): ToastX {
         if (context is Activity) {
             with(context)
@@ -67,12 +68,13 @@ object ToastX {
         return this
     }
 
+    @JvmStatic
     fun with(activity: Activity): SnackBarX {
         val rootView = activity.findViewById<ViewGroup>(android.R.id.content)
         return SnackBarX(rootView)
     }
 
-
+    @JvmStatic
     fun with(viewGroup: ViewGroup): SnackBarX {
         return SnackBarX(viewGroup)
     }
