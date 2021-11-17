@@ -5,9 +5,10 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@color/color_EEE8CD"
     tools:context=".MainActivity">
 
 
@@ -15,6 +16,8 @@
         android:id="@+id/topBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="顶部弹出" />
 
@@ -23,6 +26,8 @@
         android:id="@+id/bottomBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="底部弹出" />
 
@@ -31,6 +36,8 @@
         android:id="@+id/warnBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="警告" />
 
@@ -38,6 +45,8 @@
         android:id="@+id/tipsBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="提示" />
 
@@ -46,6 +55,8 @@
         android:id="@+id/succeedBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="成功" />
 
@@ -53,6 +64,8 @@
         android:id="@+id/errorBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="错误" />
 
@@ -60,6 +73,8 @@
         android:id="@+id/customizeTopBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="自定义布局-顶部" />
 
@@ -67,6 +82,8 @@
         android:id="@+id/customizeBottomBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="自定义布局-底部" />
 
@@ -75,6 +92,8 @@
         android:id="@+id/customizeTopNBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:onClick="onMainItemClick"
         android:text="自定义布局-顶部-不消失-触摸消失" />
 

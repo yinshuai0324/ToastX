@@ -11,6 +11,7 @@
         <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout/mtrl_layout_snackbar.xml" value="0.21739130434782608" />
         <entry key="../../../.gradle/caches/transforms-2/files-2.1/dfecd70619c1a6c2798204920189dc76/material-1.3.0/res/layout/mtrl_layout_snackbar_include.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_message.xml" value="0.2351851851851852" />
+        <entry key="app/src/main/res/layout/activity_java.xml" value="0.21739130434782608" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22327898550724637" />
         <entry key="app/src/main/res/layout/message_view.xml" value="0.21739130434782608" />
         <entry key="toast/src/main/res/drawable/bg_toast.xml" value="0.2351851851851852" />

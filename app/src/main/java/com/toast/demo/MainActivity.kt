@@ -12,12 +12,14 @@ import com.app.toast.expand.dp
 import com.app.toast.snackbar.SnackBarX
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
+import com.gyf.immersionbar.ImmersionBar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rootView: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ImmersionBar.with(this).statusBarDarkFont(true).navigationBarColor(R.color.white).init()
         rootView = findViewById(R.id.rootView)
     }
 
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     .height(40.dp)
                     .width(100.dp)
                     .radius(10f.dp)
-                    .offset(10.dp)
+                    .offset(40.dp)
                     .show()
             }
             R.id.bottomBtn -> {
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     .margin(15.dp, 15.dp)
                     .backgroundColor(R.color.toast_background_color_config2_warn)
                     .position(ToastX.POSITION_TOP)
-                    .offset(10.dp)
+                    .offset(30.dp)
                     .show()
             }
             R.id.tipsBtn -> {
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     .margin(15.dp, 15.dp)
                     .position(ToastX.POSITION_TOP)
                     .backgroundColor(R.color.toast_background_color_config2_succeed)
-                    .offset(10.dp)
+                    .offset(30.dp)
                     .show()
             }
             R.id.succeedBtn -> {
@@ -75,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     .margin(15.dp, 15.dp)
                     .position(ToastX.POSITION_TOP)
                     .backgroundColor(R.color.toast_background_color_config1_succeed)
-                    .offset(10.dp)
+                    .offset(30.dp)
                     .show()
             }
             R.id.errorBtn -> {
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     .margin(15.dp, 15.dp)
                     .position(ToastX.POSITION_TOP)
                     .backgroundColor(R.color.toast_background_color_config1_error)
-                    .offset(10.dp)
+                    .offset(30.dp)
                     .show()
             }
             R.id.customizeTopBtn -> {
@@ -92,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                 ToastX.with(this)
                     .customizeView(view)
                     .position(ToastX.POSITION_TOP)
-                    .offset(10.dp)
+                    .offset(30.dp)
                     .margin(15.dp, 15.dp)
                     .show()
             }
@@ -111,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                     .customizeView(view)
                     .duration(ToastX.DURATION_INDEFINITE)
                     .position(ToastX.POSITION_TOP)
-                    .offset(10.dp)
+                    .offset(30.dp)
                     .margin(15.dp, 15.dp)
                 toast.show()
                 view.setOnClickListener {
